@@ -444,6 +444,7 @@ class Storage(TestSuite):
             # remove data disk
             log.debug(f"Removing managed disk: {disks_added}")
             disk.remove_data_disk(disks_added)
+            time.sleep(1)
 
             # verify that partition count is decreased by 1
             partition_after_removing_disk = lsblk.get_disks(force_run=True)
