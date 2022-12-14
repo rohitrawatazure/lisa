@@ -420,6 +420,15 @@ class Storage(TestSuite):
         # get partition info before adding data disk
         partitions_before_adding_disk = lsblk.get_disks(force_run=True)
 
+        wait_mins = 15
+        for _ in range(2):
+            print("Using ssh:")
+            lsblk.get_disks(force_run=True)
+            node.close()
+            print(f"Now waiting for {wait_mins} mins")
+            time.sleep(wait_mins * 60)
+            lsblk.get_disks(force_run=True)
+
         for _ in range(disks_to_add):
             # add data disk
             log.debug("Adding 1 managed disk")
