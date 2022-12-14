@@ -420,7 +420,7 @@ class Storage(TestSuite):
         # get partition info before adding data disk
         partitions_before_adding_disk = lsblk.get_disks(force_run=True)
 
-        wait_mins = 10
+        wait_mins = 1
         for _ in range(2):
             print("Using ssh:")
             lsblk.get_disks(force_run=True)
